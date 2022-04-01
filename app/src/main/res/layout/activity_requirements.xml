@@ -154,6 +154,7 @@
                     android:textColorHint="@color/purple_500"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/TIL1"
                 android:layout_width="match_parent"
@@ -228,18 +229,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Address"
+                android:hint="Hospital Location"
                 android:padding="5dp"
                 android:textColorHint="@color/purple_500"
                 app:hintTextColor="@color/purple_500">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/HAddress"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment" />
+                    android:layout_marginStart="5dp"
+                    android:text="Pin the Hospital Location"
+                    android:textColor="@color/purple_500"
+                    android:textSize="14sp" />
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:layout_margin="5dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/zoomOUT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ZoomOUT"
+                            tools:ignore="ObsoleteLayoutParam" />
+
+                        <Button
+                            android:id="@+id/zoomIN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ZoomIN"
+                            tools:ignore="ObsoleteLayoutParam" />
+                    </LinearLayout>
+                </fragment>
+
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -278,7 +310,6 @@
                 android:textColor="@color/white">
 
             </Button>
-
 
 
         </LinearLayout>

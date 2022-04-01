@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_dynamic_primary20">
+
+    <TextView
+        android:id="@+id/idTVCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:padding="4dp"
+        android:text="Requirement"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/idIVCourse"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/idTVCourseName"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <!--text view for displaying course description-->
+    <TextView
+        android:id="@+id/idTVCourseDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVCourseName"
+        android:layout_margin="4dp"
+        android:layout_toEndOf="@id/idIVCourse"
+        android:layout_toRightOf="@id/idIVCourse"
+        android:padding="3dp"
+        android:text="Location"
+        android:textColor="@color/white" />
+
+    <!--text view for displaying course best suited for-->
+    <TextView
+        android:id="@+id/idTVSuitedFor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVCourseDesc"
+        android:layout_margin="4dp"
+        android:layout_toRightOf="@id/idIVCourse"
+        android:padding="3dp"
+        android:text="Contact Details:"
+        android:textColor="@color/white" />
+
+    <!--text view for displaying course price-->
+    <TextView
+        android:id="@+id/idTVCoursePrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVSuitedFor"
+        android:layout_margin="4dp"
+        android:layout_toRightOf="@id/idIVCourse"
+        android:padding="3dp"
+        android:text="Blood group:"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idTVCoursePrice"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+    <!--button for editing course-->
+    <Button
+        android:id="@+id/idBtnEditCourse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:layout_weight="1"
+        android:text="More Details"
+        android:textAllCaps="false" />
+
+    <!--button for viewing course details-->
+    <Button
+        android:id="@+id/idBtnVIewDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:layout_weight="1"
+        android:text="Donate"
+        android:textAllCaps="false" />
+    </LinearLayout>
+</RelativeLayout>

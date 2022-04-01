@@ -38,6 +38,12 @@ import android.widget.Toast;
 import com.example.codered4.MainActivity;
 import com.example.codered4.R;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.PlacesClient;
@@ -54,13 +60,15 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Objects;
 
-public class requirements extends AppCompatActivity {
+public class requirements extends AppCompatActivity implements OnMapReadyCallback {
     String[] items;
     String[] items1;
     ArrayAdapter<String> adapterItems;
     AutoCompleteTextView bloodGroup1,UnitNeeded1;
     TextInputEditText ddate,reason;
-    Button subBtn;
+    Button subBtn,zoomIN,zoomOUT;
+    GoogleMap gMap;
+    String HLocation;
     private TextInputEditText RecipientName1,aadhar1,DOB1,MobileNumber1,Hospitalname1,HAddress1,Need1;
     private ProgressBar loadingPB1;
     private FirebaseDatabase firebaseDatabase;
@@ -75,14 +83,17 @@ public class requirements extends AppCompatActivity {
         MobileNumber1=findViewById(R.id.MobileNumber);
 
 
-
+        zoomIN=findViewById(R.id.zoomIN);
+        zoomOUT=findViewById(R.id.zoomOUT);
 
 
         bloodGroup1=findViewById(R.id.bloodGroup);
         Hospitalname1=findViewById(R.id.Hospitalname);
         reason=findViewById(R.id.Need);
 
-        HAddress1=findViewById(R.id.HAddress);
+        SupportMapFragment supportMapFragment = (SupportMapFragment)
+                getSupportFragmentManager().findFragmentById(R.id.map);
+        supportMapFragment.getMapAsync((OnMapReadyCallback) this);
 
 
 
@@ -127,7 +138,6 @@ public class requirements extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 db();
-
                 //addNotification();
                 //sendSMS();
 
@@ -142,18 +152,19 @@ public class requirements extends AppCompatActivity {
         String bloodGroup=bloodGroup1.getText().toString();
         String unitNeeded=UnitNeeded1.getText().toString();
         String NameofHospital=Hospitalname1.getText().toString();
-        String hospitalAddress=HAddress1.getText().toString();
+        String hospitalAddress=HLocation.toString();
         String Reason_of_the_need=reason.getText().toString();
 
         CourseRVModal courseRVModal=new CourseRVModal(NameOfRecipient,aadharNumber,dateOfBirth,mobileNumber,bloodGroup,unitNeeded,NameofHospital,hospitalAddress,Reason_of_the_need);
 
         firebaseDatabase=FirebaseDatabase.getInstance("https://bloodapp-8d1d1-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        databaseReference=firebaseDatabase.getReference("Requirements");
+        databaseReference=firebaseDatabase.getReference("Requirements").child(bloodGroup);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 databaseReference.setValue(courseRVModal);
                 Toast.makeText(requirements.this, "Requirement of Blood is Broadcasting Now.!", Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(requirements.this,homeActivity.class);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -190,5 +201,37 @@ public class requirements extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "Message Sent successfully!",
                 Toast.LENGTH_LONG).show();
+    }
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        gMap = googleMap;
+        //gMap.setMapType();
+        gMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull LatLng latLng) {
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                markerOptions.title(latLng.latitude + ":" + latLng.longitude);
+                HLocation=("https://maps.google.com/?q="+latLng.latitude+","+latLng.longitude);
+                Log.i("Suspect location link","Suspect lat and long "+ String.valueOf(HLocation));
+                gMap.clear();
+                gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                gMap.addMarker(markerOptions);
+            }
+
+        });
+        zoomIN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gMap.animateCamera(CameraUpdateFactory.zoomIn());
+            }
+        });
+
+        zoomOUT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gMap.animateCamera(CameraUpdateFactory.zoomOut());
+            }
+        });
     }
 }
