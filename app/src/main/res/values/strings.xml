@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">CodeRed4</string>
+    <string-array name="items1">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>RH-Null</item>
+        <item>OH</item>
+    </string-array>
+    <string-array name="items11">
+        <item>I</item>
+        <item>II</item>
+        <item>III</item>
+        <item>IV</item>
+        <item>V</item>
+        <item>VI</item>
+    </string-array>
 </resources>

@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_main.xml" value="0.1802536231884058" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_registration1.xml" value="0.264" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_requirements.xml" value="0.2" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/select_items.xml" value="0.1" />
       </map>
     </option>
   </component>
