@@ -28,8 +28,8 @@
             android:layout_marginEnd="20dp"
             android:hint="Email"
             android:padding="5dp"
-            android:textColorHint="@color/blood"
-            app:hintTextColor="@color/blood">
+            android:textColorHint="@color/purple_500"
+            app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Name"
@@ -37,8 +37,8 @@
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
                 android:inputType="text"
-                android:textColor="@color/blood"
-                android:textColorHint="@color/blood"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@color/purple_500"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,8 +51,8 @@
             android:layout_marginEnd="20dp"
             android:hint="Password"
             android:padding="5dp"
-            android:textColorHint="@color/blood"
-            app:hintTextColor="@color/blood">
+            android:textColorHint="@color/purple_500"
+            app:hintTextColor="@color/purple_500">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/TIETrName"
@@ -60,8 +60,8 @@
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
                 android:inputType="text"
-                android:textColor="@color/blood"
-                android:textColorHint="@color/blood"
+                android:textColor="@color/purple_500"
+                android:textColorHint="@color/purple_500"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +74,7 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:backgroundTint="@color/blood"
+            android:backgroundTint="@color/purple_500"
             android:text="LOGIN" />
 
         <RelativeLayout
@@ -99,6 +99,11 @@
                 android:textColor="@color/black" />
 
         </RelativeLayout>
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
 
 

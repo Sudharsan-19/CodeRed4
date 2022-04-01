@@ -1,14 +1,32 @@
 package com.example.codered4;
 
+import static android.app.Notification.EXTRA_NOTIFICATION_ID;
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.hardware.camera2.params.MandatoryStreamCombination;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -17,10 +35,14 @@ import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-
+import com.example.codered4.MainActivity;
+import com.example.codered4.R;
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +50,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class requirements extends AppCompatActivity {
     String[] items;
@@ -121,17 +145,15 @@ public class requirements extends AppCompatActivity {
         String hospitalAddress=HAddress1.getText().toString();
         String Reason_of_the_need=reason.getText().toString();
 
-        DetailRVModal courseRVModal=new DetailRVModal(NameOfRecipient,aadharNumber,dateOfBirth,mobileNumber,bloodGroup,unitNeeded,NameofHospital,hospitalAddress,Reason_of_the_need);
+        CourseRVModal courseRVModal=new CourseRVModal(NameOfRecipient,aadharNumber,dateOfBirth,mobileNumber,bloodGroup,unitNeeded,NameofHospital,hospitalAddress,Reason_of_the_need);
 
-        firebaseDatabase=FirebaseDatabase.getInstance("https://codered-388c3-default-rtdb.asia-southeast1.firebasedatabase.app");
-        databaseReference=firebaseDatabase.getReference("Requirements").child(bloodGroup).child(aadharNumber);
+        firebaseDatabase=FirebaseDatabase.getInstance("https://bloodapp-8d1d1-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        databaseReference=firebaseDatabase.getReference("Requirements");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                databaseReference.setValue(DetailRVModal);
+                databaseReference.setValue(courseRVModal);
                 Toast.makeText(requirements.this, "Requirement of Blood is Broadcasting Now.!", Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(requirements.this,MainActivity.class);
-                startActivity(i);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -143,7 +165,7 @@ public class requirements extends AppCompatActivity {
     private void addNotification() {
         NotificationManager mNotificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("YOUR_CHANNEL_ID",
                     "YOUR_CHANNEL_NAME",
                     NotificationManager.IMPORTANCE_HIGH);

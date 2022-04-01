@@ -10,8 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeRed4">
         <activity
-            android:name=".Registration1"
+            android:name=".example"
             android:exported="false" />
+        <activity
+            android:name=".homeActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDow3KzMYfblVQaJcaHBHyWN9FVGQKm9q0" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,6 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".registeractivity"
+            android:exported="false" />
+        <activity
+            android:name=".requirements"
+            android:exported="false" />
     </application>
 
 </manifest>

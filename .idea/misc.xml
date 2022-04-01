@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/drawable-v24/ic_baseline_add_circle_24.xml" value="0.1" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_example.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_home.xml" value="0.15357142857142858" />
         <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_main2.xml" value="0.11666666666666667" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_registeractivity.xml" value="0.2" />
         <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_registration1.xml" value="0.264" />
-        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_requirements.xml" value="0.2" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/activity_requirements.xml" value="0.1" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.12222222222222222" />
+        <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/card_view.xml" value="0.12222222222222222" />
         <entry key="..\:/Users/sudha/AndroidStudioProjects/CodeRed4/app/src/main/res/layout/select_items.xml" value="0.1" />
       </map>
     </option>

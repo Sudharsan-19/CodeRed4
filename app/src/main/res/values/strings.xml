@@ -12,6 +12,12 @@
         <item>RH-Null</item>
         <item>OH</item>
     </string-array>
+    <string-array name="sexItems">
+        <item>MALE</item>
+        <item>FEMALE</item>
+        <item>TRANS</item>
+        <item>PREFER NOT TO SAY</item>
+    </string-array>
     <string-array name="items11">
         <item>I</item>
         <item>II</item>
