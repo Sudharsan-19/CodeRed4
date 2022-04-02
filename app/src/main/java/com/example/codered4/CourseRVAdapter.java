@@ -37,11 +37,14 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CourseRVAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         CourseRVModal courseRVModal = courseRVModalArrayList.get(position);
-        holder.courseNameTV.setText(courseRVModal.getNameOfRecipient());
-        holder.coursePriceTV.setText(courseRVModal.getBloodGroup());
+        holder.courseNameTV.setText("Recipient Name: "+courseRVModal.getNameOfRecipient());
+        holder.coursePriceTV.setText("Blood Group: "+courseRVModal.getBloodGroup());
+        holder.UnitNeeded.setText("Units Needed "+courseRVModal.getUnitNeeded());
+        holder.hospAdd.setText("Hospital Link: "+courseRVModal.getHospitalAddress());
         //Picasso.get().load(courseRVModal.getIMG()).into(holder.courseIV);
         setaAimation(holder.itemView,position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -67,14 +70,16 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView courseNameTV,coursePriceTV;
+        private TextView courseNameTV,coursePriceTV,UnitNeeded,hospAdd;
         private ImageView courseIV;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
             courseNameTV=itemView.findViewById(R.id.idTVCourseName);
             coursePriceTV=itemView.findViewById(R.id.idTVCousePrice);
-            courseIV=itemView.findViewById(R.id.idIVCourse);
+            UnitNeeded=itemView.findViewById(R.id.idTVneed);
+            hospAdd=itemView.findViewById(R.id.idTVhospAdd);
+            //courseIV=itemView.findViewById(R.id.idIVCourse);
         }
     }
     public interface CourseClickInterface{

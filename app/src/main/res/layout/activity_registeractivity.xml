@@ -319,7 +319,28 @@
                     android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
-                    android:layout_margin="5dp"/>
+                    android:layout_margin="5dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/zoomOUT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ZoomOUT"
+                            tools:ignore="ObsoleteLayoutParam" />
+
+                        <Button
+                            android:id="@+id/zoomIN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ZoomIN"
+                            tools:ignore="ObsoleteLayoutParam" />
+                    </LinearLayout>
+                </fragment>
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/homeLocation"
@@ -347,7 +368,28 @@
                     android:name="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
-                    android:layout_margin="5dp"/>
+                    android:layout_margin="5dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/zoomOUT1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ZoomOUT"
+                            tools:ignore="ObsoleteLayoutParam" />
+
+                        <Button
+                            android:id="@+id/zoomIN1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="ZoomIN"
+                            tools:ignore="ObsoleteLayoutParam" />
+                    </LinearLayout>
+                </fragment>
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/workLocation"

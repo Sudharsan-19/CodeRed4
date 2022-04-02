@@ -52,7 +52,7 @@ public class registeractivity extends AppCompatActivity  implements OnMapReadyCa
     TextInputEditText mob,TIETrName,Age,weight,email,pwd,pwd1;
     TextView resend;
     Fragment homeLocation,workLocation;
-    Button GetOtp,submit,zoomIN,zoomOUT;
+    Button GetOtp,submit,zoomIN,zoomOUT,zoomIN1,zoomOUT1;
     String homLoc,workLoc1;
     GoogleMap gMap;
     EditText inputnumber1;
@@ -122,8 +122,11 @@ public class registeractivity extends AppCompatActivity  implements OnMapReadyCa
 
 
 
-        //zoomIN=findViewById(R.id.zoomIN);
-        //zoomOUT=findViewById(R.id.zoomOUT);
+        zoomIN=findViewById(R.id.zoomIN);
+        zoomOUT=findViewById(R.id.zoomOUT);
+
+        zoomIN1=findViewById(R.id.zoomIN1);
+        zoomOUT1=findViewById(R.id.zoomOUT1);
 
         //SupportMapFragment supportMapFragment = (SupportMapFragment)
         //      getSupportFragmentManager().findFragmentById(R.id.map);
@@ -238,7 +241,7 @@ public class registeractivity extends AppCompatActivity  implements OnMapReadyCa
                         MarkerOptions markerOptions = new MarkerOptions();
                         markerOptions.position(latLng);
                         markerOptions.title(latLng.latitude + ":" + latLng.longitude);
-                        homLoc=("https://maps.google.com/?q="+latLng.latitude+","+latLng.longitude);
+                        homLoc=(latLng.latitude+","+latLng.longitude);
                         Log.i("Home location link","Suspect lat and long "+ String.valueOf(homLoc));
                         mMap.clear();
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
@@ -263,7 +266,7 @@ public class registeractivity extends AppCompatActivity  implements OnMapReadyCa
                         MarkerOptions markerOptions = new MarkerOptions();
                         markerOptions.position(latLng);
                         markerOptions.title(latLng.latitude + ":" + latLng.longitude);
-                        workLoc1=("https://maps.google.com/?q="+latLng.latitude+","+latLng.longitude);
+                        workLoc1=(latLng.latitude+","+latLng.longitude);
                         Log.i("Work location link","Suspect lat and long "+ String.valueOf(workLoc1));
                         mMap1.clear();
                         mMap1.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
@@ -428,7 +431,7 @@ public class registeractivity extends AppCompatActivity  implements OnMapReadyCa
 
         dbHelper dbhelper=new dbHelper(UName,UAge,USex,UBlood_Group,UEmail,UmobNumber,UworkLoc,UhomeLoc);
         firebaseDatabase = FirebaseDatabase.getInstance("https://bloodapp-8d1d1-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        databaseReference=firebaseDatabase.getReference("USERS").child(UBlood_Group).child(UmobNumber);
+        databaseReference=firebaseDatabase.getReference("USERS").child(UBlood_Group);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

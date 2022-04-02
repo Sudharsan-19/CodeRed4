@@ -1,5 +1,6 @@
 package com.example.codered4;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -65,10 +66,13 @@ public class homeActivity extends AppCompatActivity implements CourseRVAdapter.C
         dob=findViewById(R.id.dob);
         age=findViewById(R.id.age);
 
-        firebaseDatabase=FirebaseDatabase.getInstance(" https://codered-388c3-default-rtdb.asia-southeast1.firebasedatabase.app");
+        String name1=getIntent().getStringExtra("Google Name");
+//        name.setText(name1.toString());
+
+        firebaseDatabase=FirebaseDatabase.getInstance("https://bloodapp-8d1d1-default-rtdb.asia-southeast1.firebasedatabase.app/");
         databaseReference=firebaseDatabase.getReference("Requirements");
+
         courseRVModalArrayList = new ArrayList<>();
-        //card_view = findViewById(R.id.idRVCard);
         courseRVAdapter=new CourseRVAdapter(courseRVModalArrayList,this,this);
         cardRV.setLayoutManager(new LinearLayoutManager(this));
         cardRV.setAdapter(courseRVAdapter);
@@ -119,7 +123,7 @@ public class homeActivity extends AppCompatActivity implements CourseRVAdapter.C
                 courseRVAdapter.notifyDataSetChanged();
             }
 
-            @Override
+            @SuppressLint("NotifyDataSetChanged")@Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
                 courseRVAdapter.notifyDataSetChanged();
                 loadingPB.setVisibility(View.GONE);

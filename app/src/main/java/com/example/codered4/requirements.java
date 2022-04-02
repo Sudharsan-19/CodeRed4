@@ -212,7 +212,7 @@ public class requirements extends AppCompatActivity implements OnMapReadyCallbac
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title(latLng.latitude + ":" + latLng.longitude);
-                HLocation=("https://maps.google.com/?q="+latLng.latitude+","+latLng.longitude);
+                HLocation=(latLng.latitude+","+latLng.longitude);
                 Log.i("Suspect location link","Suspect lat and long "+ String.valueOf(HLocation));
                 gMap.clear();
                 gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));

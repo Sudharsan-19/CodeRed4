@@ -19,8 +19,12 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+import java.io.InterruptedIOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
-    TextView newReg;
+    TextView newReg,name,age,dob,bloodGroup;
     Button subBtn;
     GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN=100;
@@ -30,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         newReg=findViewById(R.id.newReg);
         subBtn=findViewById(R.id.loginbtn);
+        name=findViewById(R.id.name);
+        age=findViewById(R.id.age);
+        dob=findViewById(R.id.dob);
+        bloodGroup=findViewById(R.id.bloodGrp);
 
         // Configure sign-in to request the user's ID, email address, and basic
 // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -102,8 +110,13 @@ public class MainActivity extends AppCompatActivity {
                 Uri personPhoto = acct.getPhotoUrl();
 
                 Toast.makeText(this,"User Email:"+personEmail,Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(MainActivity.this,homeActivity.class);
+                i.putExtra("Google Name",personName.toString());
+                startActivity(i);
             }
-            startActivity(new Intent(MainActivity.this, homeActivity.class));
+
+            //startActivity(new Intent(MainActivity.this, homeActivity.class));
+
             // Signed in successfully, show authenticated UI.
 
         } catch (ApiException e) {
